@@ -1,4 +1,3 @@
-
 :root {
   --paper: #f7f6f2;
   --ink: #20211e;
@@ -30,6 +29,17 @@ a {
   text-decoration: none;
 }
 
+/* Этап 1: видимая рамка при навигации с клавиатуры */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.contact :focus-visible,
+.footer :focus-visible {
+  outline-color: var(--lime);
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -39,6 +49,7 @@ a {
   justify-content: space-between;
   padding: 22px 8%;
   background: rgba(247, 246, 242, 0.92);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 }
@@ -70,6 +81,8 @@ a {
 
 .menu-toggle {
   display: none;
+  min-width: 44px;
+  min-height: 44px;
   border: 0;
   background: none;
   font-size: 28px;
@@ -109,7 +122,7 @@ h1, h2, h3 {
 .hero h1 {
   font-size: clamp(42px, 6vw, 76px);
   font-weight: 800;
-  letter-spacing: -3px;
+  letter-spacing: -0.04em;
 }
 
 .hero h1 span {
@@ -218,7 +231,7 @@ h1, h2, h3 {
   height: 46px;
   border-radius: 50%;
   background: var(--lime);
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 30px;
 }
 
@@ -287,9 +300,15 @@ h1, h2, h3 {
     right: 0;
     padding: 25px 6%;
     flex-direction: column;
-    gap: 20px;
+    gap: 0;
     background: var(--paper);
     border-bottom: 1px solid var(--line);
+  }
+
+  .nav a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
   }
 
   .nav.active {
@@ -307,10 +326,6 @@ h1, h2, h3 {
     right: -45px;
     top: 75%;
     opacity: 0.35;
-  }
-
-  .hero h1 {
-    letter-spacing: -2px;
   }
 
   .section {
